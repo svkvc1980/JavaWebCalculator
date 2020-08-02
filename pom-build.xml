@@ -1,0 +1,63 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.web.cal</groupId>
+  <artifactId>WebAppCal</artifactId>
+  <packaging>war</packaging>
+  <version>0.0.5</version>
+  <name>WebAppCal Maven Webapp</name>
+  <url>http://maven.apache.org</url>
+  <dependencies>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>4.8.2</version>
+      <scope>test</scope>
+    </dependency>
+    <!-- https://mvnrepository.com/artifact/javax.servlet/servlet-api -->
+<dependency>
+    <groupId>javax.servlet</groupId>
+    <artifactId>servlet-api</artifactId>
+    <version>2.5</version>
+</dependency>
+</dependencies>
+<profiles>
+
+<profile>
+<id>qa</id>
+<build>
+<plugins>
+<plugin>
+    <groupId>org.apache.tomcat.maven</groupId>
+    <artifactId>tomcat7-maven-plugin</artifactId>
+    <version>2.2</version>
+    <configuration>
+        <url>http://3.237.196.129:9090/manager/text</url>
+        <server>TomcatServerQA</server>
+        <path>/JavaWebCalculator-qa</path>
+    </configuration>
+</plugin>
+</plugins>
+</build>
+</profile>
+
+<profile>
+<id>prod</id>
+<build>
+<plugins>
+<plugin>
+    <groupId>org.apache.tomcat.maven</groupId>
+    <artifactId>tomcat7-maven-plugin</artifactId>
+    <version>2.2</version>
+    <configuration>
+        <url>http://34.227.161.66:8080/manager/text</url>
+        <server>TomcatServerPROD</server>
+        <path>/JavaWebCalculator-prod</path>
+    </configuration>
+</plugin>
+</plugins>
+</build>
+</profile>
+</profiles>
+
+</project>
